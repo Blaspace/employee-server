@@ -15,7 +15,7 @@ app.use(cookiesParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://management-81es.onrender.com/",
+    origin: "https://management-81es.onrender.com",
     //origin: "http://localhost:3000"
   })
 );
