@@ -7,8 +7,6 @@ require("dotenv").config();
 
 const db_url = process.env.DB_URL;
 //const db_url = "mongodb://localhost:27017/training_app";
-const url = "https://management-81es.onrender.com/";
-//const url = "http://localhost:3000";
 
 const app = express();
 app.use(express.json());
@@ -17,7 +15,8 @@ app.use(cookiesParser());
 app.use(
   cors({
     credentials: true,
-    origin: url,
+    origin: "https://management-81es.onrender.com/",
+    //origin: "http://localhost:3000"
   })
 );
 
