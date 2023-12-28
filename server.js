@@ -20,6 +20,7 @@ app.use(
     origin: url,
   })
 );
+
 mongoose.set("strictQuery", false);
 mongoose.connect(db_url, () => {
   app.listen("5000", () => {
