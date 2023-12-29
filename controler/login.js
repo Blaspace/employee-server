@@ -8,8 +8,15 @@ const handleLogin = async (req, res) => {
   const foundUser = await User.findOne({ email });
   if (!foundUser) return res.sendStatus(401);
 
+  let salt;
+  if (foundUser.salt) {
+    salt = foundUser.salt;
+  } else {
+    salt = "no salt";
+  }
+
   const enteredpassword = crypto
-    .pbkdf2Sync(password, foundUser.salt, 10000, 32, "sha256")
+    .pbkdf2Sync(password, salt, 10000, 32, "sha256")
     .toString("hex");
   //const match = await bcript.compare(password, foundUser.password);
   if (enteredpassword != foundUser.password) return res.sendStatus(401);
