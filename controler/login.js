@@ -7,7 +7,6 @@ const handleLogin = async (req, res) => {
 
   const foundUser = await User.findOne({ email });
   if (!foundUser) return res.sendStatus(401);
-  console.log(foundUser);
 
   let salt;
   if (foundUser.salt) {
