@@ -7,6 +7,7 @@ const handleLogin = async (req, res) => {
 
   const foundUser = await User.findOne({ email });
   if (!foundUser) return res.sendStatus(401);
+  console.log(foundUser);
 
   let salt;
   if (foundUser.salt) {
@@ -36,7 +37,7 @@ const handleLogin = async (req, res) => {
     .then((data) => {
       res.cookie("jwt", refreshtoken, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         maxAge: 1000 * 60 * 60 * 24 * 15,
         path: "/",
       });

@@ -17,6 +17,10 @@ const userSchemer = new mongoose.Schema({
     type: String,
     require: true,
   },
+  role: {
+    type: String,
+    require: true,
+  },
   refreshtoken: {
     type: String,
     require: true,
