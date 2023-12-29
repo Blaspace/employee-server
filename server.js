@@ -12,11 +12,23 @@ const app = express();
 app.use(express.json());
 app.use(cookiesParser());
 
+const allowedOrigins = [
+  "https://management-81es.onrender.com",
+  "https://management-81es.onrender.com/*",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
-    origin: "https://management-81es.onrender.com",
-    //origin: "http://localhost:3000"
   })
 );
 
