@@ -13,6 +13,7 @@ const handleLogOut = (req, res) => {
         maxAge: 1000 * 60 * 60 * 24 * 15,
         path: "/",
       });
+
       res.sendStatus(208);
     })
     .catch(() => res.sendStatus(400));
