@@ -3,9 +3,10 @@ const User = require("../schemas/userSchema");
 const handleLogOut = (req, res) => {
   const refreshtoken = req.cookies.jwt;
   if (!refreshtoken) return res.sendStatus(200);
-
+  console.log(refreshtoken);
   User.findOneAndUpdate({ refreshtoken }, { refreshtoken: "" })
-    .then(() => {
+    .then((data) => {
+      console.log(data);
       res.clearCookie("jwt", refreshtoken, {
         httpOnly: true,
         sameSite: "none",
