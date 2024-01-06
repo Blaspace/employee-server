@@ -34,7 +34,6 @@ const handleLogin = async (req, res) => {
 
   User.findOneAndUpdate({ email }, { refreshtoken })
     .then((data) => {
-      console.log(data);
       res.cookie("jwt", data.refreshtoken, {
         httpOnly: true,
         sameSite: "none",
