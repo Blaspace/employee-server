@@ -2,7 +2,6 @@ const User = require("../schemas/userSchema");
 
 const handleGetUser = (req, res) => {
   const refreshtoken = req.cookies.jwt;
-  console.log(refreshtoken);
 
   User.findOne({ refreshtoken })
     .then((data) => {
