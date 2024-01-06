@@ -8,7 +8,7 @@ const handleLogOut = (req, res) => {
     .then(() => {
       res.clearCookie("jwt", refreshtoken, {
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
         maxAge: 1000 * 60 * 60 * 24 * 15,
         path: "/",
