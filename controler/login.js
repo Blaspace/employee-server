@@ -32,9 +32,9 @@ const handleLogin = async (req, res) => {
     { expiresIn: "3d" }
   );
 
-  User.findOneAndUpdate({ email: foundUser.email }, { refreshtoken })
+  User.findOneAndUpdate({ email }, { refreshtoken })
     .then((data) => {
-      res.cookie("jwt", refreshtoken, {
+      res.cookie("jwt", data.refreshtoken, {
         httpOnly: true,
         sameSite: "strict",
         secure: true,
