@@ -1,10 +1,9 @@
 const User = require("../schemas/userSchema");
 
-const handleGetUser = async (req, res) => {
+const handleGetUser = (req, res) => {
   const refreshtoken = req.cookies.jwt;
-  const user = await User.findOne({ refreshtoken: refreshtoken });
-  if (!user) res.sendStatus(400);
-  console.log(user);
-  res.send(user);
+  User.findOne({ refreshtoken })
+    .then((data) => res.send(data))
+    .catch(() => res.sendStatus(400));
 };
 module.exports = handleGetUser;
