@@ -5,9 +5,9 @@ const cors = require("cors");
 const router = require("./router/appRouter");
 require("dotenv").config();
 
-//const db_url = process.env.DB_URL;
+const db_url = process.env.DB_URL;
 
-const db_url = "mongodb://localhost:27017/employee";
+//const db_url = "mongodb://localhost:27017/employee";
 
 const app = express();
 app.use(express.json());
